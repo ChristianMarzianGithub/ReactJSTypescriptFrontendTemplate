@@ -13,9 +13,9 @@ The app will be available on <http://localhost:5173>. To build for production ru
 
 ## Docker & Cloud Run deployment
 
-You can containerise the application for Google Cloud Run using the provided `Dockerfile`. The final container stage runs
-`npm run preview` so that the Vite preview server listens on the port supplied by Cloud Run, ensuring the service stays
-healthy after startup.
+You can containerise the application for Google Cloud Run using the provided `Dockerfile`. The final image now serves the
+static production build with Nginx so the container remains lightweight and production ready without bundling the Vite
+preview server.
 
 ### Build the container locally
 
@@ -26,10 +26,10 @@ docker build -t myapp:latest .
 ### Run the container locally
 
 ```bash
-docker run --rm -p 8080:8080 myapp:latest
+docker run --rm -p 8080:80 myapp:latest
 ```
 
-The app will be accessible at <http://localhost:8080>. Cloud Run automatically provides the `PORT` environment variable consumed by the container entrypoint.
+The app will be accessible at <http://localhost:8080>. When deploying to Cloud Run, remember to map the platform-provided port to container port `80`.
 
 ### Deploy to Google Cloud Run
 
@@ -44,7 +44,7 @@ gcloud run deploy myapp \
 
 Replace `PROJECT_ID` and `REGION` with your Google Cloud project information.
 
-> **Note:** The Vite preview server now allows requests from the default Cloud Run host `frontend-template-456699820088.europe-west4.run.app` as well as local development addresses. To support additional domains, set the `VITE_PREVIEW_ALLOWED_HOSTS` environment variable (comma separated) or update the `preview.allowedHosts` array in `vite.config.ts` so the preview command works behind your proxy.
+> **Note:** Because the container now serves static assets via Nginx, no additional preview host configuration is required. If you need to apply custom caching or routing behaviour, mount an Nginx configuration file or extend the final stage with your own `nginx.conf`.
 
 ## Testing
 
