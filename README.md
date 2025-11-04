@@ -11,6 +11,37 @@ npm run dev
 
 The app will be available on <http://localhost:5173>. To build for production run `npm run build` and preview with `npm run preview`.
 
+## Docker & Cloud Run deployment
+
+You can containerise the application for Google Cloud Run using the provided `Dockerfile`.
+
+### Build the container locally
+
+```bash
+docker build -t myapp:latest .
+```
+
+### Run the container locally
+
+```bash
+docker run --rm -p 8080:8080 myapp:latest
+```
+
+The app will be accessible at <http://localhost:8080>. Cloud Run automatically provides the `PORT` environment variable consumed by the container entrypoint.
+
+### Deploy to Google Cloud Run
+
+```bash
+gcloud builds submit --tag gcr.io/PROJECT_ID/myapp
+gcloud run deploy myapp \
+  --image gcr.io/PROJECT_ID/myapp \
+  --platform managed \
+  --region REGION \
+  --allow-unauthenticated
+```
+
+Replace `PROJECT_ID` and `REGION` with your Google Cloud project information.
+
 ## Testing
 
 Run the unit tests powered by Vitest and Testing Library:
