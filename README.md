@@ -42,6 +42,8 @@ gcloud run deploy myapp \
 
 Replace `PROJECT_ID` and `REGION` with your Google Cloud project information.
 
+> **Note:** The Vite preview server is configured to allow requests from the deployed Cloud Run host `frontend-template-456699820088.europe-west4.run.app`. If your Cloud Run service uses a different host, update `preview.allowedHosts` in `vite.config.ts` accordingly to ensure the preview command works behind the Cloud Run proxy.
+
 ## Testing
 
 Run the unit tests powered by Vitest and Testing Library:
