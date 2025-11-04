@@ -21,8 +21,8 @@ describe('App', () => {
     );
 
     expect(screen.getByRole('link', { name: /home/i })).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: /contact/i })).toBeInTheDocument();
-    expect(screen.getByRole('switch', { name: /toggle dark mode/i })).toBeInTheDocument();
+    expect(screen.getAllByRole('link', { name: /contact/i })).toHaveLength(2);
+    expect(screen.getAllByRole('switch', { name: /toggle dark mode/i })).toHaveLength(2);
 
     const acceptButton = screen.getByRole('button', { name: /accept cookies/i });
     expect(acceptButton).toBeInTheDocument();

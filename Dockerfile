@@ -22,4 +22,5 @@ ENV PORT=8080
 
 EXPOSE 8080
 
-CMD ["sh", "-c", "npm run build -- --host 0.0.0.0 --port ${PORT:-8080}"]
+# Use Vite's preview server to serve the built assets.
+CMD ["sh", "-c", "npm run preview -- --host 0.0.0.0 --port ${PORT:-8080}"]
