@@ -50,6 +50,8 @@ Run the unit tests powered by Vitest and Testing Library:
 npm test
 ```
 
+Custom DOM matchers from Testing Library are available globally because the TypeScript configuration includes the `@testing-library/jest-dom` types, so assertions such as `toBeInTheDocument()` remain type-safe.
+
 ## Project structure
 
 - `src/assets`: Static assets such as the logo.
