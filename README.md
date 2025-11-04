@@ -13,7 +13,9 @@ The app will be available on <http://localhost:5173>. To build for production ru
 
 ## Docker & Cloud Run deployment
 
-You can containerise the application for Google Cloud Run using the provided `Dockerfile`.
+You can containerise the application for Google Cloud Run using the provided `Dockerfile`. The final container stage runs
+`npm run preview` so that the Vite preview server listens on the port supplied by Cloud Run, ensuring the service stays
+healthy after startup.
 
 ### Build the container locally
 
