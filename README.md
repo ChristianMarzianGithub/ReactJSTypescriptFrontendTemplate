@@ -50,9 +50,6 @@ Run the unit tests powered by Vitest and Testing Library:
 npm test
 ```
 
-The Vitest environment is configured via `vitest.setup.ts` to load `@testing-library/jest-dom/vitest`, enabling matcher
-assertions such as `toBeInTheDocument()` during both local development and TypeScript builds.
-
 ## Project structure
 
 - `src/assets`: Static assets such as the logo.
