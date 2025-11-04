@@ -2,10 +2,9 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
 const defaultAllowedHosts = [
-  '.run.app',
+  'frontend-template-456699820088.europe-west4.run.app',
   'localhost',
-  '127.0.0.1',
-  '::1'
+  '127.0.0.1'
 ];
 
 const envAllowedHosts = process.env.VITE_PREVIEW_ALLOWED_HOSTS
@@ -23,7 +22,6 @@ export default defineConfig({
     host: true
   },
   preview: {
-    host: true,
     allowedHosts
   }
 });

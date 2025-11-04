@@ -44,7 +44,7 @@ gcloud run deploy myapp \
 
 Replace `PROJECT_ID` and `REGION` with your Google Cloud project information.
 
-> **Note:** The Vite preview server now binds to `0.0.0.0` and trusts any hostname under `.run.app` in addition to local development addresses. To support additional domains, set the `VITE_PREVIEW_ALLOWED_HOSTS` environment variable (comma separated) or update the `preview.allowedHosts` array in `vite.config.ts` so the preview command works behind your proxy. Entries prefixed with `.` (for example `.example.com`) automatically allow the apex domain and all of its subdomains.
+> **Note:** The Vite preview server now allows requests from the default Cloud Run host `frontend-template-456699820088.europe-west4.run.app` as well as local development addresses. To support additional domains, set the `VITE_PREVIEW_ALLOWED_HOSTS` environment variable (comma separated) or update the `preview.allowedHosts` array in `vite.config.ts` so the preview command works behind your proxy.
 
 ## Testing
 
